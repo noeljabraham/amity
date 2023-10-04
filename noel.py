@@ -222,10 +222,10 @@ while i < 1000:
             PD9[0] = norm.ppf(rand_num, PD9[0], 0.1 * PD9[0])
     
     # Print PD values
-    #print(PD1[0], PD2[0], PD3[0], PD4[0], PD5[0], PD6[0], PD7[0], PD8[0], PD9[0])
+    print("The PD Values are:",PD1[0], PD2[0], PD3[0], PD4[0], PD5[0], PD6[0], PD7[0], PD8[0], PD9[0])
     
     # Print tD values
-    #print(tD1[0], tD2[0], tD3[0], tD4[0], tD5[0], tD6[0], tD7[0], tD8[0], tD9[0])
+    print("The TD Values are:",tD1[0], tD2[0], tD3[0], tD4[0], tD5[0], tD6[0], tD7[0], tD8[0], tD9[0])
     
     # Calculate sd values
     sd1 = tD1[0] * tD_STD

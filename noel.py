@@ -34,9 +34,12 @@ tD_STD=0.3
 timemean=300
 time_sd=timemean*tD_STD
 f = open ("CODE_II_Output.txt","w")
+
+# Create a list to store all the values
+output_values = []
+
 # Initialize a list to store PI values
 PI_values = []
-
 i = 0
 while i < 1000:
     i = i + 1
@@ -344,9 +347,13 @@ while i < 1000:
     pnormal8 = pfirst8 * prob8
     pnormal9 = pfirst9 * prob9
 
-# Calculate PI (the final result) and append it to the list
+ # Calculate PI (the final result)
     PI = pnormal1 + pnormal2 + pnormal3 + pnormal4 + pnormal5 + pnormal6 + pnormal7 + pnormal8 + pnormal9
     PI_values.append(PI)
+
+    # Append PD and TD values to the output_values list
+    output_values.append([PD1[0], PD2[0], PD3[0], PD4[0], PD5[0], PD6[0], PD7[0], PD8[0], PD9[0],
+                          tD1[0], tD2[0], tD3[0], tD4[0], tD5[0], tD6[0], tD7[0], tD8[0], tD9[0]])
 
 # Print the first 1000 PI values as an example
 if len(PI_values) <= 1000:
@@ -354,10 +361,12 @@ if len(PI_values) <= 1000:
 else:
     print("First 1000 PI values:\n", PI_values[:1000])
 
-# Write all PI values to a file
+# Write all values to the output.txt file
 with open('output.txt', 'w') as f:
-    for i in PI_values:
-        f.write(format(i, '.8f'))
+    for i in range(len(output_values)):
+        f.write(f"PD Values: {', '.join(map(str, output_values[i][:9]))}\n")
+        f.write(f"TD Values: {', '.join(map(str, output_values[i][9:]))}\n")
+        f.write(format(PI_values[i], '.8f'))
         f.write("\n")
 
 # Create a histogram for all PI values
